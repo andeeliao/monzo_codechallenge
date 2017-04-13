@@ -1,5 +1,7 @@
 import crawler
 import pprint
 
-crawler.crawl_wrapper('http://tomblomfield.com/')
+url = raw_input()
+
+crawler.crawl_wrapper(url)
 
