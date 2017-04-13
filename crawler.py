@@ -13,7 +13,7 @@ STATIC_FILE_TAGS = ['img', 'script', 'style']
 # TODO handle http vs https
 
 
-
+# dev help
 def print_soup_to_file(soup, title):
 	soup_file = open(title, "w+")
 	file_txt = u''.join(soup.prettify()).encode('utf-8').strip()
@@ -47,6 +47,11 @@ def clean_internal_links(orig_url, urls):
 		hashtag_pos = url.find('#')
 		if hashtag_pos != -1:
 			url = url[:hashtag_pos]
+
+
+		questionmark_pos = url.find('?')
+		if questionmark_pos != -1:
+			url = url[:questionmark_pos]
 
 		formatted_urls.append(url)
 
@@ -98,8 +103,6 @@ def crawl(orig_domain, url):
 def crawl_wrapper(url):
 	crawl(url, url)
 
+	pprint(SITE_MAP)
 
 
-crawl_wrapper('http://tomblomfield.com/')
-
-pprint(SITE_MAP)
